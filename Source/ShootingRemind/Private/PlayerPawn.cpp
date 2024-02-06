@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "PlayerPawn.h"
@@ -11,15 +11,15 @@ APlayerPawn::APlayerPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Ãæµ¹Ã¼
+	// ì¶©ëŒì²´
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("boxComp"));
 	SetRootComponent(boxComp);
 
-	// ¿Ü°ü
+	// ì™¸ê´€
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
 	meshComp->SetupAttachment(RootComponent);
 
-	// ¸Ş½Ã¿Í ÀçÁúÀ» ·ÎµåÇØ¼­ Àû¿ëÇÏ°í½Í´Ù.
+	// ë©”ì‹œì™€ ì¬ì§ˆì„ ë¡œë“œí•´ì„œ ì ìš©í•˜ê³ ì‹¶ë‹¤.
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempMesh(TEXT("/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
 	if (tempMesh.Succeeded())
 	{

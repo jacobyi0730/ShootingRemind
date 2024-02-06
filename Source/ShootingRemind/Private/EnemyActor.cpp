@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "EnemyActor.h"
@@ -11,15 +11,15 @@ AEnemyActor::AEnemyActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Ãæµ¹Ã¼
+	// ì¶©ëŒì²´
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("boxComp"));
 	SetRootComponent(boxComp);
 
-	// ¿Ü°ü
+	// ì™¸ê´€
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
 	meshComp->SetupAttachment(RootComponent);
 
-	// ¸Ş½Ã¿Í ÀçÁúÀ» ·ÎµåÇØ¼­ Àû¿ëÇÏ°í½Í´Ù.
+	// ë©”ì‹œì™€ ì¬ì§ˆì„ ë¡œë“œí•´ì„œ ì ìš©í•˜ê³ ì‹¶ë‹¤.
 	ConstructorHelpers::FObjectFinder<UStaticMesh> tempMesh(TEXT("/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
 	if (tempMesh.Succeeded())
 	{
@@ -37,22 +37,22 @@ void AEnemyActor::BeginPlay()
 {
 	Super::BeginPlay();
 	dir = -GetActorUpVector();
-	// ¸¸¾à ·£´ı°ªÀÌ 30%¶ó¸é dirÀ» ÇÃ·¹ÀÌ¾î ¹æÇâÀ¸·Î ÇÏ°í½Í´Ù.
+	// ë§Œì•½ ëœë¤ê°’ì´ 30%ë¼ë©´ dirì„ í”Œë ˆì´ì–´ ë°©í–¥ìœ¼ë¡œ í•˜ê³ ì‹¶ë‹¤.
 	float randValue = FMath::RandRange(0, 9);
 	if (randValue < 3)
 	{
 		auto target = GetWorld()->GetFirstPlayerController()->GetPawn();
 		dir = target->GetActorLocation() - this->GetActorLocation();
-		dir.Normalize();// ´ÜÀ§º¤ÅÍ, º¤ÅÍÀÇ Á¤±ÔÈ­ : º¤ÅÍÀÇ Å©±â¸¦ 1·Î ¸¸µç´Ù.
+		dir.Normalize();// ë‹¨ìœ„ë²¡í„°, ë²¡í„°ì˜ ì •ê·œí™” : ë²¡í„°ì˜ í¬ê¸°ë¥¼ 1ë¡œ ë§Œë“ ë‹¤.
 	}
 }
 
 void AEnemyActor::NotifyActorBeginOverlap(AActor* OtherActor)
 {
-	// ¸¸¾à ºÎµúÈù°ÍÀÌ ÇÃ·¹ÀÌ¾î¶ó¸é
+	// ë§Œì•½ ë¶€ë”ªíŒê²ƒì´ í”Œë ˆì´ì–´ë¼ë©´
 	if (OtherActor->IsA<APlayerPawn>())
 	{
-		// ³ÊÁ×°í ³ªÁ×°í ÇÏ°í½Í´Ù.
+		// ë„ˆì£½ê³  ë‚˜ì£½ê³  í•˜ê³ ì‹¶ë‹¤.
 		OtherActor->Destroy();
 		this->Destroy();
 	}

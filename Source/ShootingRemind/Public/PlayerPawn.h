@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -26,7 +26,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	// ¿Ü°ü°ú Ãæµ¹Ã¼¸¦ ¸¸µé°í½Í´Ù. Ãæµ¹Ã¼¸¦ Root·Î ÇÏ°í½Í´Ù.
+	// ì™¸ê´€ê³¼ ì¶©ëŒì²´ë¥¼ ë§Œë“¤ê³ ì‹¶ë‹¤. ì¶©ëŒì²´ë¥¼ Rootë¡œ í•˜ê³ ì‹¶ë‹¤.
 	UPROPERTY(EditAnywhere)
 	class UBoxComponent* boxComp;
 
